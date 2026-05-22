@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Rickroll Simulation</title>
+<style>
+  body {
+    background-color: black;
+    color: red;
+    font-family: monospace;
+    text-align: center;
+    overflow: hidden;
+  }
+  img {
+    width: 400px;
+    height: 400px;
+    margin-top: 50px;
+  }
+  h1 {
+    font-size: 2em;
+  }
+</style>
+</head>
+<body>
 
+<script>
+const rickUrl = "https://i.imgur.com/dQw4w9W.png";
+const errorMessages = [
+  "Erreur fatale !",
+  "Programme corrompu !",
+  "Système instable !",
+  "Erreur inconnue...",
+  "Données perdues !",
+  "Erreur 0xDEADBEAF !",
+  "Crash imminent !",
+  "Impossible de continuer !",
+  "Erreur critique !"
+];
+
+// Fonction pour afficher les images Rickroll 50 fois avec délai
+async function showRickroll() {
+  for (let i = 0; i < 50; i++) {
+    document.body.innerHTML = `<img src="${rickUrl}" />`;
+    await new Promise(r => setTimeout(r, 700));
+  }
+
+  // Afficher ensuite les messages d'erreur aléatoires
+  for (let i = 0; i < 20; i++) {
+    const msg = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+    document.body.innerHTML = `<h1>${msg}</h1>`;
+    await new Promise(r => setTimeout(r, 500));
+  }
+
+  // Message final
+  document.body.innerHTML = `<h1 style="color:white;">Simulation terminée 😎</h1>`;
+}
+
+// Lancer le programme dès que la page est chargée
+window.onload = showRickroll;
+</script>
+
+</body>
+</html>
